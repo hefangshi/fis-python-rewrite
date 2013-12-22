@@ -67,6 +67,9 @@ class Rewrite():
                raise TypeError("invalid rule type: %s", rule['type'])
         return False
 
+    def rule_redirect_handler(self, url, rule):
+        self.handler.redirect(rule['rewrite'])
+
     def rule_rewrite_handler(self, url, rule):
         if len(rule['rewrite']) > 1 and (rule['rewrite'][0] == '/' or rule['rewrite'][0] == '\\'):
             rule['rewrite'] = rule['rewrite'][1:]

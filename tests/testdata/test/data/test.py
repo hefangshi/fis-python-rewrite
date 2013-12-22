@@ -1,8 +1,6 @@
 import json
 import time
 
-handler = locals()['handler']
-
 result = {
     "user" : "hefangshi",
     "time" : time.time(),
