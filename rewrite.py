@@ -1,13 +1,17 @@
 import os
 import mimetypes
 import re
+import sys
+
+lib_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '../'))
+sys.path.append(lib_path)
 
 class Rewrite():
 
     """fis rewrite class"""
     def __init__(self, handler, **kwargs):
         self.handler = handler
-        self.root = os.path.normpath(os.path.join(os.path.dirname(__file__) + '/../../'))
+        self.root = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../'))
         self.mime =  mimetypes.types_map
         self.predefine_rules = {}
         self.accept_rule_types = ['rewrite', 'redirect']
@@ -117,6 +121,7 @@ class Rewrite():
             rules.append(rule)
         return rules
 
+
 #from tornado
 class StaticFileHandler():
 
@@ -134,9 +139,7 @@ class StaticFileHandler():
             return
 
         stat_result = os.stat(abspath)
-        print stat_result
         mtime = int(stat_result.st_mtime)
-        print mtime
         modified = datetime.datetime.fromtimestamp(mtime)
 
         handler.set_header("Last-Modified", modified)

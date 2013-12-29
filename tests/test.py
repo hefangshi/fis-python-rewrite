@@ -2,7 +2,7 @@ import unittest
 import os
 import sys
 
-lib_path = os.path.normpath(os.path.join(os.path.dirname(__file__) + '/../'))
+lib_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '../'))
 sys.path.append(lib_path)
 
 from rewrite import Rewrite
